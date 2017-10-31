@@ -35,8 +35,8 @@
         android:layout_alignBottom="@+id/textView3"
         android:layout_toEndOf="@+id/textView3"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="number"
+        android:text="0" />
 
     <TextView
         android:id="@+id/textView4"
@@ -62,8 +62,8 @@
         android:layout_alignBottom="@+id/textView4"
         android:layout_toEndOf="@+id/textView4"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="number"
+        android:text="0" />
 
     <TextView
         android:id="@+id/textView6"
@@ -74,12 +74,15 @@
         android:layout_marginTop="35dp"
         android:text="Number of refills:" />
 
-    <Spinner
-        android:id="@+id/spinner3"
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/editText5"
         android:layout_alignBottom="@+id/textView6"
-        android:layout_toEndOf="@+id/textView6" />
+        android:layout_toEndOf="@+id/textView6"
+        android:inputType="number"
+        android:ems="10"
+        android:text="0"/>
 
     <TextView
         android:id="@+id/textView7"
@@ -102,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="Mornings" />
 
         <RadioButton
@@ -142,8 +146,8 @@
         android:layout_alignBottom="@+id/textView8"
         android:layout_toEndOf="@+id/textView8"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="time"
+        android:text="09:00" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -156,6 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="Monday" />
 
         <RadioButton
