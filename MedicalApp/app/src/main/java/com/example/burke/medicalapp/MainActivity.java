@@ -8,6 +8,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        //testing layout of add.xml. Uncomment line beneath to load activity main first
+        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.add);
     }
 }
