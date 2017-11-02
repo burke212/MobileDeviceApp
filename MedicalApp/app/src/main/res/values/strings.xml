@@ -7,12 +7,15 @@
     <string name="amount_per_bottle">Amount per bottle:</string>
     <string name="number_of_refills">Number of refills:</string>
     <string name="when_to_take_medication">When to take medication:</string>
+    <string name="times_a_dayQ">How Many Times A Day:</string>
     <string name="mornings">Mornings</string>
     <string name="noon">Noon</string>
     <string name="evening">Evening</string>
+    <string name="night">Night</string>
     <string name="custom">Custom</string>
     <string name="time">Time:</string>
-    <string name="default_time">09:00</string>
+    <string name="default_time">09:00 AM</string>
+    <string name="everyday">Everyday</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
@@ -22,6 +25,23 @@
     <string name="sunday">Sunday</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+
+    <string-array name="dosage_types">
+        <item>mL</item>
+        <item>mg</item>
+        <item>drop(s)</item>
+        <item>capsule(s)</item>
+        <item>pill(s)</item>
+        <item>tablet(s)</item>
+        <item>puff(s)</item>
+    </string-array>
+
+    <string-array name="Times_A_Day">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
 
 
 </resources>

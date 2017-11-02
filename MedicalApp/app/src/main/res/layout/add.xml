@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -43,15 +43,31 @@
             android:textStyle="bold"
             android:text="@string/dosage_per_sitting" />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/dosage_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textView3"
-                android:layout_toEndOf="@+id/textView3"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_toEndOf="@+id/textView4"
                 android:ems="10"
                 android:inputType="number"
-                android:hint="@string/zero_default_value" />
+                android:hint="@string/zero_default_value"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/measure1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/dosage_types" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/textView4"
@@ -66,15 +82,29 @@
 
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/bottle_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView4"
                 android:layout_toEndOf="@+id/textView4"
                 android:ems="10"
                 android:inputType="number"
-                android:hint="@string/zero_default_value" />
+                android:hint="@string/zero_default_value"
+                android:layout_weight="1" />
+
+            <Spinner
+                android:id="@+id/measure2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:entries="@array/dosage_types" />
+        </LinearLayout>
 
             <TextView
                 android:id="@+id/textView6"
@@ -97,6 +127,20 @@
                 android:ems="10"
                 android:hint="@string/zero_default_value"/>
 
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/times_a_dayQ"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/Times_A_Day" />
+
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
@@ -115,30 +159,37 @@
                 android:layout_marginStart="29dp"
                 android:id="@+id/radioGroup">
 
-                <RadioButton
-                    android:id="@+id/radioButton4"
+                <CheckBox
+                    android:id="@+id/morningCB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
                     android:text="@string/mornings" />
 
-                <RadioButton
-                    android:id="@+id/radioButton3"
+                <CheckBox
+                    android:id="@+id/noonCB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/noon" />
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
+                <CheckBox
+                    android:id="@+id/eveningCB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/evening" />
 
-                <RadioButton
-                    android:id="@+id/radioButton"
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/night" />
+
+                <CheckBox
+                    android:id="@+id/customCB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -156,15 +207,12 @@
                 android:textStyle="bold"
                 android:text="@string/time" />
 
-            <EditText
-                android:id="@+id/editText4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/textView8"
-                android:layout_toEndOf="@+id/textView8"
-                android:ems="10"
-                android:inputType="time"
-                android:hint="@string/default_time" />
+        <TextView
+            android:id="@+id/Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_time"
+            android:textSize="24sp" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -172,50 +220,57 @@
                 android:layout_alignEnd="@+id/editText4"
                 android:layout_alignTop="@+id/radioGroup">
 
-                <RadioButton
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="@string/everyday" />
+
+                <CheckBox
                     android:id="@+id/radioButton5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:checked="true"
                     android:text="@string/monday" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radioButton6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/tuesday" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radioButton7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/wednesday" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radioButton8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/thursday" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radioButton9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/friday" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radioButton10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/saturday" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/radioButton11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -224,24 +279,28 @@
             </RadioGroup>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="25dp">
+            android:weightSum="3">
             <Button
                 android:id="@+id/button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_weight="1"
                 android:text="@string/cancel"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/button2"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="190dp"
-                android:layout_marginRight="5dp"
-                android:text="@string/save"/>
+                android:layout_weight="1"
+                android:text="@string/save" />
 
         </LinearLayout>
 
