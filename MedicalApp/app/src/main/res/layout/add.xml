@@ -16,6 +16,8 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:text="@string/medication_name" />
 
         <EditText
@@ -26,7 +28,7 @@
             android:layout_alignStart="@+id/editText2"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="@string/name"
+            android:hint="@string/name"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -37,7 +39,9 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/editText"
             android:layout_marginTop="26dp"
-            android:text="Dosage per sitting:" />
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/dosage_per_sitting" />
 
             <EditText
                 android:id="@+id/editText2"
@@ -47,7 +51,7 @@
                 android:layout_toEndOf="@+id/textView3"
                 android:ems="10"
                 android:inputType="number"
-                android:text="0" />
+                android:hint="@string/zero_default_value" />
 
             <TextView
                 android:id="@+id/textView4"
@@ -56,7 +60,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView3"
                 android:layout_marginTop="34dp"
-                android:text="Amount per bottle:" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/amount_per_bottle" />
 
 
 
@@ -68,7 +74,7 @@
                 android:layout_toEndOf="@+id/textView4"
                 android:ems="10"
                 android:inputType="number"
-                android:text="0" />
+                android:hint="@string/zero_default_value" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -77,7 +83,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView4"
                 android:layout_marginTop="35dp"
-                android:text="Number of refills:" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/number_of_refills" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -87,7 +95,7 @@
                 android:layout_toEndOf="@+id/textView6"
                 android:inputType="number"
                 android:ems="10"
-                android:text="0"/>
+                android:hint="@string/zero_default_value"/>
 
             <TextView
                 android:id="@+id/textView7"
@@ -96,7 +104,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView6"
                 android:layout_marginTop="33dp"
-                android:text="When to take medication:" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/when_to_take_medication" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -111,28 +121,28 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="Mornings" />
+                    android:text="@string/mornings" />
 
                 <RadioButton
                     android:id="@+id/radioButton3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Noon" />
+                    android:text="@string/noon" />
 
                 <RadioButton
                     android:id="@+id/radioButton2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Evening" />
+                    android:text="@string/evening" />
 
                 <RadioButton
                     android:id="@+id/radioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Custom" />
+                    android:text="@string/custom" />
             </RadioGroup>
 
             <TextView
@@ -142,7 +152,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/radioGroup"
                 android:layout_marginTop="11dp"
-                android:text="Time:" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="@string/time" />
 
             <EditText
                 android:id="@+id/editText4"
@@ -152,7 +164,7 @@
                 android:layout_toEndOf="@+id/textView8"
                 android:ems="10"
                 android:inputType="time"
-                android:text="09:00" />
+                android:hint="@string/default_time" />
 
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -166,49 +178,49 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:checked="true"
-                    android:text="Monday" />
+                    android:text="@string/monday" />
 
                 <RadioButton
                     android:id="@+id/radioButton6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Tuesday" />
+                    android:text="@string/tuesday" />
 
                 <RadioButton
                     android:id="@+id/radioButton7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Wednesday" />
+                    android:text="@string/wednesday" />
 
                 <RadioButton
                     android:id="@+id/radioButton8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Thursday" />
+                    android:text="@string/thursday" />
 
                 <RadioButton
                     android:id="@+id/radioButton9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Friday" />
+                    android:text="@string/friday" />
 
                 <RadioButton
                     android:id="@+id/radioButton10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Saturday" />
+                    android:text="@string/saturday" />
 
                 <RadioButton
                     android:id="@+id/radioButton11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Sunday" />
+                    android:text="@string/sunday" />
             </RadioGroup>
 
         <LinearLayout
@@ -221,7 +233,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="Cancel"/>
+                android:text="@string/cancel"/>
 
             <Button
                 android:id="@+id/button2"
@@ -229,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="190dp"
                 android:layout_marginRight="5dp"
-                android:text="Save"/>
+                android:text="@string/save"/>
 
         </LinearLayout>
 
