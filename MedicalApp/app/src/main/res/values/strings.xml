@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MedicalApp</string>
+    <string name="medication_name">Medication Name:</string>
+    <string name="name">Name</string>
 
 
 </resources>
