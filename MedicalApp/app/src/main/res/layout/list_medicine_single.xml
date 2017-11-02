@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Medicine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Medicine"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/Dosage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dosage: " />
+
+            <TextView
+                android:id="@+id/Days"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Days:" />
+
+            <TextView
+                android:id="@+id/Times"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Times:" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/Edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit" />
+
+            <Button
+                android:id="@+id/Remove"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Remove" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

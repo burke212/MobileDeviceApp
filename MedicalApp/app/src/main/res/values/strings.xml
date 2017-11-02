@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">MedicalApp</string>
+    <string-array name="dosage_types">
+        <item>mL</item>
+        <item>mg</item>
+        <item>drop(s)</item>
+        <item>capsule(s)</item>
+        <item>pill(s)</item>
+        <item>tablet(s)</item>
+        <item>puff(s)</item>
+    </string-array>
 
-
+    <integer-array name="Times_A_Day">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </integer-array>
 </resources>
