@@ -7,6 +7,21 @@
     tools:context="com.example.burke.medicalapp.MainActivity">
 
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="184dp"
+        android:text="@string/add_med" />
 
-
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button3"
+        android:layout_alignTop="@+id/button3"
+        android:layout_marginTop="84dp"
+        android:text="@string/view_all_meds" />
 </RelativeLayout>

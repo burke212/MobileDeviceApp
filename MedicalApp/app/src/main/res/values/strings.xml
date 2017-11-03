@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">MedicalApp</string>
+
+    <!--STRINGS TO BE ADDED TO ACTIVITY_MAIN-->
+    <string name="welcome">Welcome! Please select an option.</string>
+    <string name="add_med">Add A New Medication</string>
+    <string name="view_all_meds">View All Medications</string>
+
+    <!--STRINGS TO BE ADDED TO VIEW_MED_DATA-->
+    <string name="prompt">Medication previously added.</string>
+    <string name="edit_btn">Edit</string>
+    <string name="view_btn">Remove</string>
+
+    <!--STRINGS TO BE ADDED TO ADD-->
     <string name="medication_name">Medication Name:</string>
     <string name="name">Name</string>
     <string name="dosage_per_sitting">Dosage per sitting:</string>
@@ -25,6 +37,7 @@
     <string name="sunday">Sunday</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+
 
     <string-array name="dosage_types">
         <item>mL</item>

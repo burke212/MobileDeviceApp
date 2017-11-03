@@ -3,4 +3,12 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--COLOR PALETTE SUGGESTION BY JOSE-->
+    <color name="colorGunMetalGray">#212121</color>
+    <color name="colorMedicalRed">#e70303</color>
+    <color name="colorTan">#ffa557</color>
+    <color name="colorWhite">#ffffff</color>
+
+
 </resources>
