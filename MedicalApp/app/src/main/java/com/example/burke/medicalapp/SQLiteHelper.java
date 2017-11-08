@@ -72,7 +72,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         //contentValues.put(COL_TIMESADAY,timesaday);
         contentValues.put(COL_ALARM,alarm);
         contentValues.put(COL_DAY,day);
-        int result = db.update(TABLE_NAME, contentValues, "ID = ?",new String[] { id });
+        int result = db.update(TABLE_NAME, contentValues, "_id = ?",new String[] { id });
         if (result == 0) {
             return false;
         } else {
@@ -82,6 +82,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public Integer deleteData (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_NAME, "ID = ?",new String[] {id});
+        return db.delete(TABLE_NAME, "_id = ?",new String[] {id});
     }
 }

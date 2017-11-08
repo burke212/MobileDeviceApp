@@ -14,10 +14,12 @@
         android:orientation="horizontal"
         android:layout_above="@id/buttons">
 
-        <ListView
-            android:id="@+id/list1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@color/colorGunMetalGray" />
     </LinearLayout>
 
     <LinearLayout
@@ -28,7 +30,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@+id/add"

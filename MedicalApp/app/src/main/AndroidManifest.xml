@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".TestView"></activity>
+        <activity android:name=".ViewMed"></activity>
+        <activity android:name=".AddActivity"></activity>
     </application>
 
 </manifest>

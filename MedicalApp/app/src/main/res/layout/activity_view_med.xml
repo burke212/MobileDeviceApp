@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.burke.medicalapp.TestView">
+    tools:context="com.example.burke.medicalapp.ViewMed">
 
 
     <LinearLayout
@@ -25,23 +25,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
+            android:id="@+id/back"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/add"
-            android:layout_alignTop="@+id/add"
+            android:layout_alignParentBottom="true"
             android:layout_weight="1"
-            android:text="@string/view_all_meds" />
+            android:text="@string/back" />
 
         <Button
             android:id="@+id/add"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_weight="1"
             android:text="@string/add_med" />
     </LinearLayout>

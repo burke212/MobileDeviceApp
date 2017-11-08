@@ -1,6 +1,5 @@
 package com.example.burke.medicalapp;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
@@ -8,29 +7,38 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-public class TestView extends AppCompatActivity {
+public class ViewMed extends AppCompatActivity {
     SQLiteHelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_view);
+        setContentView(R.layout.activity_view_med);
         myDb = new SQLiteHelper(this);
 
         Cursor res = myDb.getAllData();
         ListView list = (ListView) findViewById(R.id.list);
         Button add = (Button) findViewById(R.id.add);
+        Button back = (Button) findViewById(R.id.back);
 // Setup cursor adapter using cursor from last step
         CustomAdapter adapter = new CustomAdapter(this, res);
 // Attach cursor adapter to the ListView
         list.setAdapter(adapter);
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(ViewMed.this,"Data Inserted",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ViewMed.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(TestView.this,"Data Inserted",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(TestView.this, MainActivity.class);
+                //Toast.makeText(ViewMed.this,"Data Inserted",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(ViewMed.this, AddActivity.class);
                 startActivity(intent);
             }
         });

@@ -37,6 +37,7 @@
     <string name="sunday">Sunday</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
+    <string name="back">Back</string>
 
 
     <string-array name="dosage_types">
