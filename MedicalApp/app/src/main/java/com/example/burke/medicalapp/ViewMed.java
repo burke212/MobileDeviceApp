@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 public class ViewMed extends AppCompatActivity {
     SQLiteHelper myDb;
+    CustomAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class ViewMed extends AppCompatActivity {
         Button add = (Button) findViewById(R.id.add);
         Button back = (Button) findViewById(R.id.back);
 // Setup cursor adapter using cursor from last step
-        CustomAdapter adapter = new CustomAdapter(this, res);
+        adapter = new CustomAdapter(this, res);
 // Attach cursor adapter to the ListView
         list.setAdapter(adapter);
 
@@ -46,5 +47,16 @@ public class ViewMed extends AppCompatActivity {
 
 // Switch to new cursor and update contents of ListView
         //adapter.changeCursor(todoCursor);
+    }
+
+    public void update(String id){
+        Intent intent = new Intent(ViewMed.this, editActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
+    }
+    public void remove(String id){
+        myDb.deleteData(id);
+        Cursor res = myDb.getAllData();
+        adapter.changeCursor(res);
     }
 }

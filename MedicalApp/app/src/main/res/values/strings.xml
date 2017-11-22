@@ -26,6 +26,9 @@
     <string name="night">Night</string>
     <string name="custom">Custom</string>
     <string name="time">Time:</string>
+    <string name="day">Day:</string>
+    <string name="timehelper">Click To Edit/Change Time.</string>
+
     <string name="default_time">09:00 AM</string>
     <string name="everyday">Everyday</string>
     <string name="monday">Monday</string>
@@ -38,6 +41,8 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="back">Back</string>
+
+    <string name="addingMed">Adding New Medication</string>
 
 
     <string-array name="dosage_types">

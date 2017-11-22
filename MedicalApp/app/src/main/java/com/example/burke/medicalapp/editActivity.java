@@ -2,8 +2,9 @@ package com.example.burke.medicalapp;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.os.Bundle;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,7 +17,6 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -24,11 +24,8 @@ import java.util.Calendar;
 
 import static android.content.ContentValues.TAG;
 
-/**
- * Created by Juwan on 11/7/2017.
- */
+public class editActivity extends AppCompatActivity {
 
-public class AddActivity extends AppCompatActivity {
     private EditText editText;
     private EditText dosageNum;
     private Spinner measure1;
@@ -55,22 +52,18 @@ public class AddActivity extends AppCompatActivity {
     private Button save;
     private int timeCount = 0;
     SQLiteHelper myDb;
-    private TextView TimeText1,TimeText2,TimeText3,TimeText4;
+    private TextView TimeText1,TimeText2,TimeText3,TimeText4, Title;
     private Button btnAddData;
     private RadioGroup timeRG, daysRG;
-    private String days,time;
+    private String days,time, id;
     DateFormat formatDateTime = DateFormat.getDateTimeInstance();
     Calendar dateTime = Calendar.getInstance();
     Format formatter;
-
-    //TODO NEED TO ADD ALARMS/NOTIFICATIONS
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //testing layout of add.xml. Uncomment line beneath to load activity main first
-        //setContentView(R.layout.activity_main);
         setContentView(R.layout.add);
+        id = getIntent().getExtras().getString("id");
         myDb = new SQLiteHelper(this);
 
         editText = (EditText)findViewById( R.id.editText );
@@ -97,6 +90,11 @@ public class AddActivity extends AppCompatActivity {
         sundayCB = (CheckBox)findViewById( R.id.sundayCB );
         button = (Button)findViewById( R.id.button );
         save = (Button)findViewById( R.id.save );
+        Title = (TextView) findViewById(R.id.Title);
+        Title.setText("Editing Data for Medicine Entry #: " + id);
+        btnAddData = (Button) findViewById(R.id.save);
+        btnAddData.setText("Update");
+
 
         time = "";
         days = "";
@@ -109,7 +107,8 @@ public class AddActivity extends AppCompatActivity {
         TimeText3.setVisibility(View.GONE);
         TimeText4 = (TextView) findViewById(R.id.Time4);
         TimeText4.setVisibility(View.GONE);
-        btnAddData = (Button) findViewById(R.id.save);
+
+
 
         timeRG = (RadioGroup) findViewById(R.id.times);
         daysRG = (RadioGroup) findViewById(R.id.days);
@@ -121,7 +120,7 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //new TimePickerDialog Box
-                new TimePickerDialog(AddActivity.this, t1, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
+                new TimePickerDialog(editActivity.this, t1, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
             }
         });
 
@@ -129,21 +128,21 @@ public class AddActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //new TimePickerDialog Box
-                new TimePickerDialog(AddActivity.this, t2, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
+                new TimePickerDialog(editActivity.this, t2, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
             }
         });
         TimeText3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //new TimePickerDialog Box
-                new TimePickerDialog(AddActivity.this, t3, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
+                new TimePickerDialog(editActivity.this, t3, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
             }
         });
         TimeText4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //new TimePickerDialog Box
-                new TimePickerDialog(AddActivity.this, t4, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
+                new TimePickerDialog(editActivity.this, t4, dateTime.get(Calendar.HOUR_OF_DAY), dateTime.get(Calendar.MINUTE), false).show();
             }
         });
 
@@ -179,7 +178,7 @@ public class AddActivity extends AppCompatActivity {
 
                 }
                 else{
-                            customCB.performClick();
+                    customCB.performClick();
                 }
             }
 
@@ -241,7 +240,7 @@ public class AddActivity extends AppCompatActivity {
                     timeCount++;
                     customCB.setChecked(false);
                 }else if(morningCB.isChecked() && timeCount >= Integer.parseInt(timesSpinner.getSelectedItem().toString())){
-                    Toast.makeText(AddActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
+                    Toast.makeText(editActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
                     morningCB.setChecked(false);
                 }
                 else{
@@ -260,13 +259,13 @@ public class AddActivity extends AppCompatActivity {
                     timeCount++;
                     customCB.setChecked(false);
 
-            }else if(noonCB.isChecked() && timeCount >= Integer.parseInt(timesSpinner.getSelectedItem().toString())){
-                    Toast.makeText(AddActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
+                }else if(noonCB.isChecked() && timeCount >= Integer.parseInt(timesSpinner.getSelectedItem().toString())){
+                    Toast.makeText(editActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
                     noonCB.setChecked(false);
-            }
+                }
                 else{
-                timeCount--;
-            }
+                    timeCount--;
+                }
             }
         });
         eveningCB.setOnClickListener(new View.OnClickListener() {
@@ -280,7 +279,7 @@ public class AddActivity extends AppCompatActivity {
                     timeCount++;
                     customCB.setChecked(false);
                 }else if(eveningCB.isChecked() && timeCount >= Integer.parseInt(timesSpinner.getSelectedItem().toString())){
-                    Toast.makeText(AddActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
+                    Toast.makeText(editActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
                     eveningCB.setChecked(false);
                 }
                 else{
@@ -299,7 +298,7 @@ public class AddActivity extends AppCompatActivity {
                     timeCount++;
                     customCB.setChecked(false);
                 }else if(nightCB.isChecked() && timeCount >= Integer.parseInt(timesSpinner.getSelectedItem().toString())){
-                    Toast.makeText(AddActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
+                    Toast.makeText(editActivity.this, "Reached Limit of Times: " + timeCount, Toast.LENGTH_LONG).show();
                     nightCB.setChecked(false);
                 }
                 else{
@@ -311,12 +310,13 @@ public class AddActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddActivity.this, ViewMed.class);
+                Intent intent = new Intent(editActivity.this, ViewMed.class);
                 startActivity(intent);
             }
         });
 
         AddData();
+        setupDefaultValues();
     }
 
     //function to set time
@@ -375,12 +375,12 @@ public class AddActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if (editText.getText().toString() == null || dosageNum.getText().toString() == null || bottleNum.getText().toString() == null || editText5.getText().toString() == null || editText.getText().toString().isEmpty() || dosageNum.getText().toString().isEmpty() || bottleNum.getText().toString().isEmpty() || editText5.getText().toString().isEmpty()) {
-                            Toast.makeText(AddActivity.this, "Medicine Name, Dosage, Amount, and Refills are REQUIRED", Toast.LENGTH_LONG).show();
+                            Toast.makeText(editActivity.this, "Medicine Name, Dosage, Amount, and Refills are REQUIRED", Toast.LENGTH_LONG).show();
                         } else {
                             if(Double.parseDouble(dosageNum.getText().toString()) <= 0 || Double.parseDouble(bottleNum.getText().toString()) <= 0) {
-                                Toast.makeText(AddActivity.this, "Dosage and Amount MUST BE > 0", Toast.LENGTH_LONG).show();
+                                Toast.makeText(editActivity.this, "Dosage and Amount MUST BE > 0", Toast.LENGTH_LONG).show();
                             }
-                                else{
+                            else{
                                 if (customCB.isChecked()) {
                                     if (timesSpinner.getSelectedItem().toString().equals("1")) {
                                         time = "," + TimeText1.getText().toString();
@@ -440,22 +440,116 @@ public class AddActivity extends AppCompatActivity {
                                     }
                                     days = days.replaceFirst("^,", "");
                                 }
-                                boolean isInserted = myDb.insertData(editText.getText().toString(),
+                                boolean isInserted = myDb.updateData(id,editText.getText().toString(),
                                         dosageNum.getText().toString() + " " + measure1.getSelectedItem().toString(),
                                         bottleNum.getText().toString() + " " + measure2.getSelectedItem().toString(),
                                         editText5.getText().toString(),
                                         time,
                                         days);
                                 if (isInserted == true) {
-                                    Toast.makeText(AddActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(AddActivity.this, ViewMed.class);
+                                    Toast.makeText(editActivity.this, "Data Updated", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(editActivity.this, ViewMed.class);
                                     startActivity(intent);
                                 } else
-                                    Toast.makeText(AddActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(editActivity.this, "Data Not Updated", Toast.LENGTH_LONG).show();
                             }
                         }
                     }
                 });
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////GETTING INFO FROM DATABASE TO SHOW TO USER/////////////////////////////////////////////////////////////////////////////
+    private void setupDefaultValues(){
+        ////if(myDb.getDataById(id)){
+
+        //}
+        Cursor res = myDb.getDataById(id);
+        while(res.moveToNext()){
+            String gotDosage = res.getString(res.getColumnIndexOrThrow("DOSAGE"));
+            String gotAmount = res.getString(res.getColumnIndexOrThrow("AMOUNT"));
+            String gotTimes = res.getString(res.getColumnIndexOrThrow("ALARM"));
+            String gotDays = res.getString(res.getColumnIndexOrThrow("DAYS"));
+            String[] dosage = gotDosage.split("\\s+");
+            String[] amount = gotAmount.split("\\s+");
+            String[] times = gotTimes.split(",");
+            String[] days = gotDays.split(",");
+            editText.setText(res.getString(res.getColumnIndexOrThrow("NAME")));
+            dosageNum.setText(dosage[0]);
+            for(int i = 0; i < measure1.getCount(); i++){
+                if(measure1.getItemAtPosition(i).toString().equals(dosage[1])){
+                    measure1.setSelection(i);
+                    break;
+                }
+            }
+            //editText.setText(dosage[1]);
+            bottleNum.setText(amount[0]);
+            for(int i = 0; i < measure2.getCount(); i++){
+                if(measure2.getItemAtPosition(i).toString().equals(amount[1])){
+                    measure2.setSelection(i);
+                    break;
+                }
+            }
+            editText5.setText(res.getString(res.getColumnIndexOrThrow("REFILLS")));
+            //bottleNum.setText(amount[1]);
+            Integer timesaday = times.length;
+            Integer numberofdays = days.length;
+
+
+            if(timesaday == 2){
+                timesSpinner.setSelection(1);
+            }
+            else if(timesaday == 3){
+                timesSpinner.setSelection(2);
+            }
+            else if(timesaday == 4){
+                timesSpinner.setSelection(3);
+            }else{
+                timesSpinner.setSelection(0);
+            }
+            customCB.performClick();
+
+            if (timesSpinner.getSelectedItem().toString().equals("1")){
+                //Log.d(TAG, "on.Custom: gettingIN");
+                TimeText1.setText(times[0]);
+            }else if(timesSpinner.getSelectedItem().toString().equals("2")){
+                TimeText1.setText(times[0]);
+                TimeText2.setText(times[1]);
+            }else if(timesSpinner.getSelectedItem().toString().equals("3")){
+                TimeText1.setText(times[0]);
+                TimeText2.setText(times[1]);
+                TimeText3.setText(times[2]);
+            }else if(timesSpinner.getSelectedItem().toString().equals("4")){
+                TimeText1.setText(times[0]);
+                TimeText2.setText(times[1]);
+                TimeText3.setText(times[2]);
+                TimeText4.setText(times[3]);
+            }
+
+            if(numberofdays == 7){
+                everydayCB.setChecked(true);
+            }
+            else{
+                everydayCB.setChecked(false);
+                int count = daysRG.getChildCount();
+                for(int i = 0; i < count; i++){
+                    final Object child = daysRG.getChildAt(i);
+                    if(child instanceof CheckBox){
+                        for(String day : days){
+                            if (((CheckBox) child).getText().toString().equals(day)){
+                                ((CheckBox) child).setChecked(true);
+                                ((CheckBox) child).post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        ((CheckBox) child).setChecked(true);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
     }
 
 }

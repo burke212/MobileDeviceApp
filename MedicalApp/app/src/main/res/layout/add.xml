@@ -13,12 +13,18 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/addingMed" />
+
+        <TextView
+            android:id="@+id/MedicineName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/medication_name"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="@string/medication_name" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editText"
@@ -55,10 +61,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView4"
                 android:layout_toEndOf="@+id/textView4"
+                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number"
                 android:hint="@string/zero_default_value"
-                android:layout_weight="1" />
+                android:inputType="numberDecimal" />
 
             <Spinner
                 android:id="@+id/measure1"
@@ -93,10 +99,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/textView4"
                 android:layout_toEndOf="@+id/textView4"
+                android:layout_weight="1"
                 android:ems="10"
-                android:inputType="number"
                 android:hint="@string/zero_default_value"
-                android:layout_weight="1" />
+                android:inputType="numberDecimal" />
 
             <Spinner
                 android:id="@+id/measure2"
@@ -196,24 +202,63 @@
                     android:text="@string/custom" />
             </RadioGroup>
 
-            <TextView
-                android:id="@+id/textView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/times"
-                android:layout_marginTop="11dp"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="@string/time" />
+        <TextView
+            android:id="@+id/timehelper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/times"
+            android:layout_marginTop="11dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/time" />
 
         <TextView
-            android:id="@+id/Time"
+            android:id="@+id/timesTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/times"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/timehelper" />
+        <TextView
+            android:id="@+id/Time1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/default_time"
             android:textSize="24sp" />
-
+        <TextView
+            android:id="@+id/Time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/default_time"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/Time3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/default_time"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/Time4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/default_time"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/times"
+            android:layout_marginTop="11dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/day" />
         <RadioGroup
             android:id="@+id/days"
             android:layout_width="wrap_content"
