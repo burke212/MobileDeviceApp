@@ -7,6 +7,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 /**
@@ -19,6 +23,10 @@ public class Notifications extends Activity{
 
     //set ID for notification
     int mNotificationID = 000;
+    String currentDay;
+    String currentTime;
+    String medDay;
+    String medTime;
 
     //Constructor
     private void Notifications(){
@@ -29,7 +37,8 @@ public class Notifications extends Activity{
         mBuilder.setContentText("HELLO WORLD");
 
         //pending intent
-        PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
+        PendingIntent pi = PendingIntent.getActivity(this, 0,
+                new Intent(this, MainActivity.class), 0);
 
         mBuilder.setContentIntent(pi);
 
@@ -48,8 +57,21 @@ public class Notifications extends Activity{
         mBuilder.setContentText("Time to take " + medName);
     }
 
+    private void setCurrentDay(){
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+        Calendar calendar = Calendar.getInstance();
+        currentDay = dayFormat.format(calendar.getTime());
+    }
+
+    private void setCurrentTime(){
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
+        Calendar calendar = Calendar.getInstance();
+        currentTime = dayFormat.format(calendar.getTime());
+    }
+
     // Check day & time. Notify user if time to take med.
     private void timeToNotify(){
+        setCurrentDay();
         if(currentDay == medDay){
             if(currentTime == medTime){
                 //set ID for notification
