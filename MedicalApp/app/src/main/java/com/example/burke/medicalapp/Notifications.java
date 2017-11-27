@@ -28,11 +28,7 @@ public class Notifications extends Activity{
 
     //set ID for notification
     int mNotificationID = 000;
-    String currentDay;
-    String currentTime;
-    String medDay;
-    String medTime;
-    String days;
+    String currentDay, currentTime, days, medication;
 
     //Constructor
     private void Notifications(){
@@ -85,6 +81,7 @@ public class Notifications extends Activity{
         getCurrentDay();
         while (info.moveToNext()) {
             days = info.getString(info.getColumnIndexOrThrow("DAYS"));
+            medication = info.getString(info.getColumnIndexOrThrow("NAME"));
             List<String> medDays = Arrays.asList(days.split(","));
             for (String medDay : medDays){
                 if(currentDay == medDay){
@@ -93,6 +90,10 @@ public class Notifications extends Activity{
 
                     //get an instance of the notificationManager service
                     NotificationManager mgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+
+                    mBuilder.setContentTitle("Reminder");
+                    mBuilder.setContentText("It's time to take "+medication);
 
                     //build notification & issue it
                     mgr.notify(mNotificationID, mBuilder.build());
