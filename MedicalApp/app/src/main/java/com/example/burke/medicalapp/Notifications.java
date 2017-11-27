@@ -3,10 +3,13 @@ package com.example.burke.medicalapp;
 import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v4.app.NotificationCompat;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -67,14 +70,18 @@ public class Notifications extends Activity{
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
         Calendar calendar = Calendar.getInstance();
         currentTime = dayFormat.format(calendar.getTime());
+
     }
 
     // Check day & time. Notify user if time to take med.
     private void timeToNotify(){
-        setCurrentDay();
-        if(currentDay == medDay){
-            if(currentTime == medTime){
-                //set ID for notification
+        SQLiteHelper sqLiteHelper = new SQLiteHelper(this);
+        Cursor info = sqLiteHelper.getDataByTime(currentTime);
+        while (info.moveToNext()) {
+            medDay = info.getString(info.getColumnIndexOrThrow("day"));
+            setCurrentDay();
+            if(currentDay == medDay){
+
                 mNotificationID = mNotificationID + 1;
 
                 //get an instance of the notificationManager service
@@ -83,6 +90,7 @@ public class Notifications extends Activity{
                 //build notification & issue it
                 mgr.notify(mNotificationID, mBuilder.build());
             }
+
         }
     }
 

@@ -67,6 +67,12 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getDataByTime(String time) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME+" time = "+time,null);
+        return res;
+    }
+
     public boolean updateData(String id,String name,String dosage,String amtbtl,String numrefills,String alarm,String day) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
