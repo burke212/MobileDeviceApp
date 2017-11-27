@@ -38,11 +38,11 @@ public class Notifications extends Activity{
         mBuilder.setContentTitle("MY NOTIFICATION TITLE");
         mBuilder.setContentText("HELLO WORLD");
 
-        //pending intent
-        PendingIntent pi = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);
-
-        mBuilder.setContentIntent(pi);
+//        //pending intent
+//        PendingIntent pi = PendingIntent.getActivity(this, 0,
+//                new Intent(this, ViewMed.class), PendingIntent.FLAG_UPDATE_CURRENT);
+//
+//        mBuilder.setContentIntent(pi);
 
         //set ID for notification
         //int mNotificationID = 001;
@@ -85,6 +85,11 @@ public class Notifications extends Activity{
             List<String> medDays = Arrays.asList(days.split(","));
             for (String medDay : medDays){
                 if(currentDay == medDay){
+                    //pending intent
+                    PendingIntent pi = PendingIntent.getActivity(this, 0,
+                            new Intent(this, ViewMed.class), PendingIntent.FLAG_UPDATE_CURRENT);
+
+                    mBuilder.setContentIntent(pi);
 
                     mNotificationID = mNotificationID + 1;
 
