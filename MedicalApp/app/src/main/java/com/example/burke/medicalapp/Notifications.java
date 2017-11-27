@@ -11,7 +11,9 @@ import android.support.v4.app.NotificationCompat;
 
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 import static android.content.Context.NOTIFICATION_SERVICE;
@@ -30,6 +32,7 @@ public class Notifications extends Activity{
     String currentTime;
     String medDay;
     String medTime;
+    String days;
 
     //Constructor
     private void Notifications(){
@@ -60,13 +63,13 @@ public class Notifications extends Activity{
         mBuilder.setContentText("Time to take " + medName);
     }
 
-    private void setCurrentDay(){
+    private void getCurrentDay(){
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
         Calendar calendar = Calendar.getInstance();
         currentDay = dayFormat.format(calendar.getTime());
     }
 
-    private void setCurrentTime(){
+    private void getCurrentTime(){
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEEE", Locale.US);
         Calendar calendar = Calendar.getInstance();
         currentTime = dayFormat.format(calendar.getTime());
@@ -74,21 +77,26 @@ public class Notifications extends Activity{
     }
 
     // Check day & time. Notify user if time to take med.
+
     private void timeToNotify(){
         SQLiteHelper sqLiteHelper = new SQLiteHelper(this);
+        getCurrentTime();
         Cursor info = sqLiteHelper.getDataByTime(currentTime);
+        getCurrentDay();
         while (info.moveToNext()) {
-            medDay = info.getString(info.getColumnIndexOrThrow("day"));
-            setCurrentDay();
-            if(currentDay == medDay){
+            days = info.getString(info.getColumnIndexOrThrow("DAYS"));
+            List<String> medDays = Arrays.asList(days.split(","));
+            for (String medDay : medDays){
+                if(currentDay == medDay){
 
-                mNotificationID = mNotificationID + 1;
+                    mNotificationID = mNotificationID + 1;
 
-                //get an instance of the notificationManager service
-                NotificationManager mgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                    //get an instance of the notificationManager service
+                    NotificationManager mgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-                //build notification & issue it
-                mgr.notify(mNotificationID, mBuilder.build());
+                    //build notification & issue it
+                    mgr.notify(mNotificationID, mBuilder.build());
+                }
             }
 
         }

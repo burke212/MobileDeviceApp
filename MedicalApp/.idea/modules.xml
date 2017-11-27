@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MedicalApp.iml" filepath="$PROJECT_DIR$/MedicalApp.iml" />
+<<<<<<< HEAD
       <module fileurl="file://C:\Users\burke\Documents\GitHub\MobileDeviceApp\MedicalApp\MedicalApp.iml" filepath="C:\Users\burke\Documents\GitHub\MobileDeviceApp\MedicalApp\MedicalApp.iml" />
+=======
+>>>>>>> f0eec91e7f42b6d960767074c75133f160af1f9e
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\burke\Documents\GitHub\MobileDeviceApp\MedicalApp\app\app.iml" filepath="C:\Users\burke\Documents\GitHub\MobileDeviceApp\MedicalApp\app\app.iml" />
     </modules>
