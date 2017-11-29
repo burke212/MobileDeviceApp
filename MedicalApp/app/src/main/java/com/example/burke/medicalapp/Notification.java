@@ -22,7 +22,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  * Created by burke on 11/26/2017.
  */
 
-public class Notifications extends Activity{
+public class Notification extends Activity{
 
     NotificationCompat.Builder mBuilder;
 
@@ -52,6 +52,8 @@ public class Notifications extends Activity{
 
         //build notification & issue it
         //  mgr.notify(mNotificationID, mBuilder.build());
+
+//        timeToNotify();
     }
 
     // Change the notification text to the medication name
@@ -74,7 +76,7 @@ public class Notifications extends Activity{
 
     // Check day & time. Notify user if time to take med.
 
-    private void timeToNotify(){
+    public void timeToNotify(){
         SQLiteHelper sqLiteHelper = new SQLiteHelper(this);
         getCurrentTime();
         Cursor info = sqLiteHelper.getDataByTime(currentTime);
