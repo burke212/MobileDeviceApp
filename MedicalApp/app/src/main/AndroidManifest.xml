@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.burke.medicalapp">
-
+<uses-permission android:name="com.android.alarm.permission.SET_ALARM"></uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +19,8 @@
         <activity android:name=".ViewMed" />
         <activity android:name=".AddActivity" />
         <activity android:name=".editActivity"></activity>
+
+        <receiver android:name=".AlarmService" />
     </application>
 
 </manifest>

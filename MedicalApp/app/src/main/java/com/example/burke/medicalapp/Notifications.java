@@ -45,13 +45,13 @@ public class Notifications extends Activity{
         mBuilder.setContentIntent(pi);
 
         //set ID for notification
-        //int mNotificationID = 001;
+        int mNotificationID = 001;
 
         //get an instance of the notificationManager service
         NotificationManager mgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         //build notification & issue it
-        //  mgr.notify(mNotificationID, mBuilder.build());
+        mgr.notify(mNotificationID, mBuilder.build());
     }
 
     // Change the notification text to the medication name

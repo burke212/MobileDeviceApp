@@ -92,6 +92,18 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean updateAMT(String id,String amtbtl) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_AMTBTL,amtbtl);
+        int result = db.update(TABLE_NAME, contentValues, "_id = ?",new String[] { id });
+        if (result == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public Integer deleteData (String id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_NAME, "_id = ?",new String[] {id});
