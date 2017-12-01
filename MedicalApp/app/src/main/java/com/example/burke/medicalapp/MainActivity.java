@@ -1,27 +1,15 @@
 package com.example.burke.medicalapp;
 
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
-
-import java.text.DateFormat;
-import java.text.Format;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private Button view,add;
+
+    Notification notification = new Notification();
 
 //TODO dynamically set checkbox limit or # of time boxes based on Spinner(Times A Day)
 //TODO dynamically check all if everyday is checked if unchecked uncheck all
@@ -42,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         view = (Button)findViewById( R.id.view );
         add = (Button)findViewById( R.id.add );
+
+
 
 view.setOnClickListener(new View.OnClickListener() {
     @Override

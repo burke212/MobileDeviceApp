@@ -29,6 +29,8 @@ import static android.content.ContentValues.TAG;
  */
 
 public class AddActivity extends AppCompatActivity {
+    Notification notification = new Notification();
+
     private EditText editText;
     private EditText dosageNum;
     private Spinner measure1;
@@ -450,6 +452,7 @@ public class AddActivity extends AppCompatActivity {
                                     Toast.makeText(AddActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                                     Intent intent = new Intent(AddActivity.this, ViewMed.class);
                                     startActivity(intent);
+//                                    notification.timeToNotify();
                                 } else
                                     Toast.makeText(AddActivity.this, "Data not Inserted", Toast.LENGTH_LONG).show();
                             }
