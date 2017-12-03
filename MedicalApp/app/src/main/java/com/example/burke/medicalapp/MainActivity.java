@@ -10,11 +10,7 @@ public class MainActivity extends AppCompatActivity {
     private Button view,add;
 
 
-//TODO dynamically set checkbox limit or # of time boxes based on Spinner(Times A Day)
-//TODO dynamically check all if everyday is checked if unchecked uncheck all
-//TODO Add individual medication to SharedPref using delimiter ";",
 // set ADD condition that no strings have ";" in them multiple values ",".
-// TODO edit list_medicine_single.xml to have valuable information to user
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
