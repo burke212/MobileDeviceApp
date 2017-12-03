@@ -57,7 +57,7 @@ public class AlarmService extends BroadcastReceiver {
             PendingIntent pi = PendingIntent.getActivity(context, 9000, intentForPend, 0);
 
             mBuilder.setSmallIcon(R.mipmap.ic_launcher);
-            mBuilder.setContentTitle("Take Medicine: " + name);
+            mBuilder.setContentTitle("Take Medicine: " + name + " w/Water");
             mBuilder.setContentText("Dosage: " + dosage + " At Time: " + time);
             mBuilder.setAutoCancel(true);
             mBuilder.setContentIntent(pi);
