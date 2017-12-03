@@ -92,10 +92,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean updateAMT(String id,String amtbtl) {
+    public boolean updateAMT(String id,String amtbtl,int refills) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_AMTBTL,amtbtl);
+        contentValues.put(COL_NUMREFILLS,refills);
         int result = db.update(TABLE_NAME, contentValues, "_id = ?",new String[] { id });
         if (result == 0) {
             return false;

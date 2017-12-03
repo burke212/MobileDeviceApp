@@ -51,7 +51,7 @@ public class AlarmService extends BroadcastReceiver {
 
         if(weekday == day){ //&& currentTime.equals(time)){//Name of day doesn't matter because we are not display day -- dont add time because might be delayed call
            // Log.e(TAG, "getting in DayIF");
-            Intent intentForPend = new Intent(context, MainActivity.class);
+            Intent intentForPend = new Intent(context, ViewMed.class);
             int id = NotificationID.getID();
             intentForPend.putExtra("id", id);
             PendingIntent pi = PendingIntent.getActivity(context, 9000, intentForPend, 0);
@@ -68,29 +68,42 @@ public class AlarmService extends BroadcastReceiver {
 
            // mBuilder.setContentIntent(pi);
             myDb = new SQLiteHelper(context);
+            int refillRES = 0;
+            String toPASSamtBTL ="";
             Cursor res = myDb.getDataById(idDB);
-            Double dos, amt;
+            Double dos, amt = 1.0;
             Double newAMT = 1.0;
             while (res.moveToNext()){
                 String dosageRES = res.getString(res.getColumnIndexOrThrow("DOSAGE"));
                 String amountRES = res.getString(res.getColumnIndexOrThrow("AMOUNT"));
+                String refills = res.getString(res.getColumnIndexOrThrow("REFILLS"));
+                Log.e(TAG, "NEWAMT: " + newAMT + "NEWREFILL: " + refills);
                 String[] dosS = dosageRES.split("\\s+");
                 String[] amtS = amountRES.split("\\s+");
+                toPASSamtBTL = amtS[1];
                 dos = Double.parseDouble(dosS[0]);
                 amt = Double.parseDouble(amtS[0]);
+                refillRES = Integer.parseInt(refills);
                 newAMT = amt - dos;
+                myDb.updateAMT(idDB,newAMT.toString() + " " + toPASSamtBTL,refillRES);
             }
-            myDb.close();
             if(newAMT <= 0){
+                if(amt > 0){
+                    refillRES = refillRES - 1;
+                }
+                Log.e(TAG, "NEWAMT: " + newAMT + "NEWREFILL: " + refillRES);
+
+                myDb.updateAMT(idDB,newAMT.toString() + " " + toPASSamtBTL,refillRES);
                 mBuilderREFILL.setSmallIcon(R.mipmap.ic_launcher);
                 mBuilderREFILL.setContentTitle("REFILL MEDICINE " + name);
-                mBuilderREFILL.setContentText("AMOUNT " + newAMT);
+                mBuilderREFILL.setContentText("AMOUNT " + newAMT + "\n Your Prescription May Have Expired.");
                 mBuilderREFILL.setAutoCancel(true);
                 mBuilderREFILL.setContentIntent(pi);
 
                 mgr.notify(999999 , mBuilderREFILL.build());
             }
 
+            myDb.close();
             //set ID for notification
             //mNotificationID = 001;
 
