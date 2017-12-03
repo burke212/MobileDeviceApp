@@ -22,7 +22,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
  * Created by burke on 11/26/2017.
  */
 
-public class Notifications extends Activity{
+public class Notification extends Activity{
 
     NotificationCompat.Builder mBuilder;
 
