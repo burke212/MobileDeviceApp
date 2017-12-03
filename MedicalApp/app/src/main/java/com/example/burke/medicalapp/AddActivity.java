@@ -29,7 +29,6 @@ import static android.content.ContentValues.TAG;
  */
 
 public class AddActivity extends AppCompatActivity {
-    Notification notification = new Notification();
 
     private EditText editText;
     private EditText dosageNum;

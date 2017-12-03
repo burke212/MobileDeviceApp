@@ -9,7 +9,6 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
     private Button view,add;
 
-    Notification notification = new Notification();
 
 //TODO dynamically set checkbox limit or # of time boxes based on Spinner(Times A Day)
 //TODO dynamically check all if everyday is checked if unchecked uncheck all
