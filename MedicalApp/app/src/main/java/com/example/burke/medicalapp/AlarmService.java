@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
@@ -59,6 +61,7 @@ public class AlarmService extends BroadcastReceiver {
             mBuilder.setSmallIcon(R.mipmap.ic_launcher);
             mBuilder.setContentTitle("Take Medicine: " + name + " w/Water");
             mBuilder.setContentText("Dosage: " + dosage + " At Time: " + time);
+            mBuilder.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
             mBuilder.setAutoCancel(true);
             mBuilder.setContentIntent(pi);
             //Log.e(TAG, "getting in onReceive" + weekday + day);
